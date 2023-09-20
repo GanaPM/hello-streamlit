@@ -13,6 +13,9 @@
 # limitations under the License.
 
 import streamlit as st
+import pandas as pd
+import matplotlib.pyplot as plt
+
 from streamlit.logger import get_logger
 
 LOGGER = get_logger(__name__)
@@ -23,28 +26,27 @@ def run():
         page_title="Hello",
         page_icon="👋",
     )
+    df=pd.read_csv(r'toy_dataset.csv')
+    print(df)
 
-    st.write("# Welcome to Streamlit! 👋")
+    """Bar Chart"""
 
-    st.sidebar.success("Select a demo above.")
+    plt.rcParams["figure.figsize"] = (10,5)
 
-    st.markdown(
-        """
-        Streamlit is an open-source app framework built specifically for
-        Machine Learning and Data Science projects.
-        **👈 Select a demo from the sidebar** to see some examples
-        of what Streamlit can do!
-        ### Want to learn more?
-        - Check out [streamlit.io](https://streamlit.io)
-        - Jump into our [documentation](https://docs.streamlit.io)
-        - Ask a question in our [community
-          forums](https://discuss.streamlit.io)
-        ### See more complex demos
-        - Use a neural net to [analyze the Udacity Self-driving Car Image
-          Dataset](https://github.com/streamlit/demo-self-driving)
-        - Explore a [New York City rideshare dataset](https://github.com/streamlit/demo-uber-nyc-pickups)
-    """
-    )
+    city_name = df['City']
+    Income = df['Income']
+    plt.bar(city_name,Income)
+    plt.xlabel('City')
+    plt.ylabel('Income')
+    plt.title('Bar_Chart')
+    plt.xticks(rotation=45,horizontalalignment='right' )
+    plt.show()
+
+    st.write("Here's our first attempt at using data to create a table:")
+    st.write(df)
+    st.write(plt.show())
+
+    
 
 
 if __name__ == "__main__":
