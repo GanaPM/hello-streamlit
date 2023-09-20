@@ -35,6 +35,8 @@ def run():
 
     city_name = df['City']
     Income = df['Income']
+    fig,ax=plt.subplots()
+    ax.bar(city_name,Income)
     plt.bar(city_name,Income)
     plt.xlabel('City')
     plt.ylabel('Income')
