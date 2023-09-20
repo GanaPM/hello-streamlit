@@ -40,11 +40,11 @@ def run():
     plt.ylabel('Income')
     plt.title('Bar_Chart')
     plt.xticks(rotation=45,horizontalalignment='right' )
-    plt.show()
-
+    st.pyplot()
+    
     st.write("Here's our first attempt at using data to create a table:")
     st.write(df)
-    st.write(plt.show())
+    
 
     
 
