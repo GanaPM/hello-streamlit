@@ -15,7 +15,6 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
-# import plotly.express as px
 
 from streamlit.logger import get_logger
 
@@ -24,37 +23,23 @@ LOGGER = get_logger(__name__)
 
 
     
-df=pd.read_csv(r'toy_dataset.csv')
-print(df)
-
-# fig = px.bar(df, x = 'City', y= 'Income')
-# st.plotly_chart(fig)
+df=pd.read_csv(r'Real_estate.csv')
 
 """Bar Chart Start"""
   
 
 plt.rcParams["figure.figsize"] = (10,5)
 
-city_name = df['City']
-Income = df['Income']
+Price = df['house_price_of_unit_area']
+Age = df['house_age']
 fig,ax=plt.subplots()
-ax.bar(city_name,Income)
+ax.bar(Price,Age)
 
-plt.bar(city_name,Income)
-plt.xlabel('City')
-plt.ylabel('Income')
+plt.bar(Price,Age)
+plt.xlabel('Price')
+plt.ylabel('Age')
 plt.title('Bar_Chart')
-plt.xticks(rotation=45,horizontalalignment='right' )
 
 st.pyplot(fig)
 
 """Bar Chart End"""
-st.write("Here's our first attempt at using data to create a table:")    
-# st.write(df)
-    
-
-    
-
-
-# if __name__ == "__main__":
-#     run()
