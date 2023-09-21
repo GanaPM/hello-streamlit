@@ -15,39 +15,46 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+# import plotly.express as px
 
 from streamlit.logger import get_logger
 
 LOGGER = get_logger(__name__)
 
 
-def run():
-    st.set_page_config(
-        page_title="Hello",
-        page_icon="👋",
-    )
-    df=pd.read_csv(r'toy_dataset.csv')
-    print(df)
 
-    """Bar Chart"""
+    
+df=pd.read_csv(r'toy_dataset.csv')
+print(df)
 
-    plt.rcParams["figure.figsize"] = (10,5)
+# fig = px.bar(df, x = 'City', y= 'Income')
+# st.plotly_chart(fig)
 
-    city_name = df['City']
-    Income = df['Income']
-    plt.bar(city_name,Income)
-    plt.xlabel('City')
-    plt.ylabel('Income')
-    plt.title('Bar_Chart')
-    plt.xticks(rotation=45,horizontalalignment='right' )
-    plt.show()
+"""Bar Chart Start"""
+  
 
-    st.write("Here's our first attempt at using data to create a table:")
-    st.write(df)
-    st.write(plt.show())
+plt.rcParams["figure.figsize"] = (10,5)
+
+city_name = df['City']
+Income = df['Income']
+fig,ax=plt.subplots()
+ax.bar(city_name,Income)
+
+plt.bar(city_name,Income)
+plt.xlabel('City')
+plt.ylabel('Income')
+plt.title('Bar_Chart')
+plt.xticks(rotation=45,horizontalalignment='right' )
+
+st.pyplot(fig)
+
+"""Bar Chart End"""
+st.write("Here's our first attempt at using data to create a table:")    
+# st.write(df)
+    
 
     
 
 
-if __name__ == "__main__":
-    run()
+# if __name__ == "__main__":
+#     run()
